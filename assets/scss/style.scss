@@ -1,3 +1,4 @@
+@import 'icons';
 body {
     margin: 0;
     color: #1e1e1e;
@@ -18,53 +19,71 @@ body {
 .ch-ico-company {
     position: relative;
     display: inline-block;
-    background: url('/home/krystian/network/assets/icons/ch-ico-company.svg');
-    width: 20px;
-    height: 20px;
-    vertical-align: middle;
+    background: $ch-ico-company;
+    width: 24px;
+    height: 24px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .ch-ico-company-white {
     position: relative;
     display: inline-block;
-    background: url('/home/krystian/network/assets/icons/ch-ico-company-white.svg');
-    width: 20px;
-    height: 20px;
-    vertical-align: middle;
+    background: $ch-ico-company-white;
+    width: 24px;
+    height: 24px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .ch-ico-company-primary {
     position: relative;
     display: inline-block;
-    background: url('/home/krystian/network/assets/icons/ch-ico-company-primary.svg');
-    width: 20px;
-    height: 20px;
-    vertical-align: middle;
+    background: $ch-ico-company-primary;
+    width: 24px;
+    height: 24px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .ch-ico-person {
     position: relative;
     display: inline-block;
-    background: url('/home/krystian/network/assets/icons/ch-ico-person.svg');
+    background: $ch-ico-person;
     width: 20px;
-    height: 20px;
-    vertical-align: middle;
+    height: 24px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .ch-ico-person-white {
     position: relative;
     display: inline-block;
-    background: url('/home/krystian/network/assets/icons/ch-ico-person-white.svg');
+    background: $ch-ico-person-white;
     width: 20px;
-    height: 20px;
-    vertical-align: middle;
+    height: 24px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .ch-ico-person-primary {
     position: relative;
     display: inline-block;
-    background: url('/home/krystian/network/assets/icons/ch-ico-person-primary.svg');
+    background: $ch-ico-person-primary;
     width: 20px;
-    height: 20px;
-    vertical-align: middle;
+    height: 24px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.center-circle {
+    i {
+        width: 30px;
+        height: 30px;
+    }
 }

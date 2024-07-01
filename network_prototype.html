@@ -95,7 +95,7 @@
             .attr("class", "link");
 
         link.append("line")
-            .attr("stroke", "#e2e2e2")
+            .attr("stroke", "#d8d8d8")
             .style("stroke-dasharray", ("3, 3"))
             .attr("stroke-width", 1);
 
@@ -118,24 +118,22 @@
             .attr("xlink:href", d => d.id !== "1" ? d.url : null);
 
         nodeLink.append("circle")
-            .attr("r", d => d.id === "1" ? 40 : 25)
-            .attr("fill", d => d.id === "1" ? primaryColor : secondaryColor)
-            .attr("stroke", d => d.id !== "1" ? primaryColor : '')
-        
+            .attr("r", d => d.id === "1" ? 35 : 25)
+            .attr("fill", d => d.id === "1" ? primaryColor : secondaryColor)        
 
         nodeLink.append("foreignObject")
             .style("font-size", 12)
             .attr("width", 150)  // Maksymalna szerokość tekstu
             .attr("height", 40)  // Wysokość kontenera, dostosuj odpowiednio
             .attr("x", -75)  // Pozycja x: połowa szerokości, aby wyśrodkować
-            .attr("y", 30)  // Pozycja y: 30
+            .attr("y", d => d.id === "1" ? 40 : 30) // Pozycja y: 30
             .append("xhtml:div")
             .style("text-align", "center")
             .style("word-wrap", "break-word")
             .text(d => d.name);
 
         nodeLink.append("foreignObject")
-            .attr("class", "icon")
+            .attr("class",  d => d.id === "1" ? 'center-circle' : '')
             .attr("width", 40)
             .attr("height", 40)
             .attr("x", -20)
@@ -165,6 +163,7 @@
                 .attr("class", () => {
                     return d.type === "company" ? "ch-ico-company-primary" : "ch-ico-person-primary";
                 });
+                d3.select(event.currentTarget).select("circle").attr("stroke-width", 3).attr("stroke", primaryColor)
             }
         }).on("mouseout", (event, d) => {
             link.filter(l => l.source.id === d.id || l.target.id === d.id)
@@ -179,6 +178,7 @@
                 .attr("class", () => {
                     return d.type === "company" ? "ch-ico-company" : "ch-ico-person";
                 });
+                d3.select(event.currentTarget).select("circle").attr("stroke",'')
             }
         });
     </script>
