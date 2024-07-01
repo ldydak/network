@@ -60,8 +60,8 @@
         });
 
         const simulation = d3.forceSimulation(data.nodes)
-            .force("link", d3.forceLink(data.links).id(d => d.id).distance(150))
-            .force("charge", d3.forceManyBody().strength(-200))
+            .force("link", d3.forceLink(data.links).id(d => d.id).distance(50))
+            .force("charge", d3.forceManyBody().strength(-100))
             .force("center", d3.forceCenter(width / 2, height / 2).strength(0.05))
             .force("collision", d3.forceCollide().radius(100 - margin));
 
@@ -96,7 +96,8 @@
 
         link.append("line")
             .attr("stroke", "#ebebeb")
-            .attr("stroke-width", 2);
+            .style("stroke-dasharray", ("3, 3"))
+            .attr("stroke-width", 1);
 
         const linkText = link.append("text")
             .attr("class", "relationship")
@@ -153,6 +154,7 @@
             link.filter(l => l.source.id === d.id || l.target.id === d.id)
                 .select("line")
                 .attr("stroke", '#1e1e1e')
+                .style("stroke-dasharray", 0)
                 .attr("stroke-width", 3);
         }).on("mouseout", (event, d) => {
             link.filter(l => l.source.id === d.id || l.target.id === d.id)
@@ -160,8 +162,8 @@
                 .style("display", "none");
             link.filter(l => l.source.id === d.id || l.target.id === d.id)
                 .select("line")
-                .attr("stroke", 'green')
-                .attr("stroke-width", 2);
+                .attr("stroke", '#1E8550')
+                .attr("stroke-width", 1);
         });
     </script>
 </body>
