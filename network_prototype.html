@@ -119,7 +119,8 @@
 
         nodeLink.append("circle")
             .attr("r", 25)
-            .attr("fill", d => d.id === "1" ? primaryColor : secondaryColor);
+            .attr("fill", d => d.id === "1" ? primaryColor : secondaryColor)
+            .attr("stroke", d => d.id !== "1" ? primaryColor : '')
         
 
         nodeLink.append("foreignObject")
@@ -133,17 +134,20 @@
             .style("word-wrap", "break-word")
             .text(d => d.name);
 
-        // nodeLink.append("div")
-        //     .attr("class", d => d.type === "company" ? "ch-ico-company" : "ch-ico-person")
-        //     .attr("dy", 4)
-        //     .attr("dx", -5);
-
-        nodeLink.append("image")
-            .attr("xlink:href", "/Users/ldydak/Desktop/network/assets/icons/ch-ico-company-white.svg")
-            .attr("x", -13)
-            .attr("y", -13)
-            .attr("width", 26)
-            .attr("height", 26);
+        nodeLink.append("foreignObject")
+            .attr("class", "icon")
+            .attr("width", 40)
+            .attr("height", 40)
+            .attr("x", -20)
+            .attr("y", -20)
+            .append("xhtml:i")
+            .attr("class", d => {
+        if (d.id === "1") {
+            return d.type === "company" ? "ch-ico-company-white" : "ch-ico-person-white";
+        } else {
+            return d.type === "company" ? "ch-ico-company" : "ch-ico-person";
+            }
+        });
 
         node.on("mouseover", (event, d) => {
             link.filter(l => l.source.id === d.id || l.target.id === d.id)
@@ -156,6 +160,12 @@
                 .attr("stroke", primaryColor)
                 .style("stroke-dasharray", 0)
                 .attr("stroke-width", 3);
+            if (d.id !== "1") {
+                d3.select(event.currentTarget).select("i")
+                .attr("class", () => {
+                    return d.type === "company" ? "ch-ico-company-primary" : "ch-ico-person-primary";
+                });
+            }
         }).on("mouseout", (event, d) => {
             link.filter(l => l.source.id === d.id || l.target.id === d.id)
                 .select("text")
@@ -164,6 +174,12 @@
                 .select("line")
                 .attr("stroke", primaryColor)
                 .attr("stroke-width", 1);
+            if (d.id !== "1") {
+                d3.select(event.currentTarget).select("i")
+                .attr("class", () => {
+                    return d.type === "company" ? "ch-ico-company" : "ch-ico-person";
+                });
+            }
         });
     </script>
 </body>

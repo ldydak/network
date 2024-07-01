@@ -15,4 +15,58 @@ body {
   height: 650px;
 }
 
+.ch-ico-company {
+  position: relative;
+  display: inline-block;
+  background: url("/home/krystian/network/assets/icons/ch-ico-company.svg");
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+}
+
+.ch-ico-company-white {
+  position: relative;
+  display: inline-block;
+  background: url("/home/krystian/network/assets/icons/ch-ico-company-white.svg");
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+}
+
+.ch-ico-company-primary {
+  position: relative;
+  display: inline-block;
+  background: url("/home/krystian/network/assets/icons/ch-ico-company-primary.svg");
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+}
+
+.ch-ico-person {
+  position: relative;
+  display: inline-block;
+  background: url("/home/krystian/network/assets/icons/ch-ico-person.svg");
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+}
+
+.ch-ico-person-white {
+  position: relative;
+  display: inline-block;
+  background: url("/home/krystian/network/assets/icons/ch-ico-person-white.svg");
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+}
+
+.ch-ico-person-primary {
+  position: relative;
+  display: inline-block;
+  background: url("/home/krystian/network/assets/icons/ch-ico-person-primary.svg");
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+}
+
 /*# sourceMappingURL=style.css.map */
