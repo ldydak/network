@@ -1,0 +1,44 @@
+body {
+    margin: 0;
+    color: #1e1e1e;
+    overflow-x: hidden;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    background-color: #F0F3F8;
+    padding: 0 !important;
+}
+
+.tile-wrapper {
+    background-color: white;
+    width: 1020px;
+    height: 650px;
+}
+
+.name {
+    font-size: 10px;
+}
+.ch-ico-company {
+    // position: relative;
+    // display: inline-block;
+    // background: url('/Users/ldydak/Desktop/network/assets/icons/ch-ico-company.svg');
+    // width: 20px;
+    // height: 20px;
+    // vertical-align: middle;
+    // &:before {
+    //     content: url('/assets/icons/ch-ico-company.svg');
+    //     background: url('/assets/icons/ch-ico-company.svg');
+    //     position: absolute;
+    //     width: 20px;
+    //     height: 20px;
+    //     top: -4px;
+    //     left: -5px;
+    // }
+    &.primary {
+
+
+    }
+    &.white {
+
+    }
+}

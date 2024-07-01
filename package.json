@@ -1,0 +1,12 @@
+{
+    "name": "sass-compile",
+    "version": "1.0.0",
+    "description": "A simple sass compile config.",
+    "scripts": {
+        "sass": "sass --watch --update --style=expanded assets/scss/style.scss:style.css"
+    },
+    "license": "ISC",
+    "dependencies": {
+        "sass": "^1.62.1"
+    }
+}
