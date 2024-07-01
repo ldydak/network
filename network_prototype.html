@@ -118,7 +118,7 @@
             .attr("xlink:href", d => d.id !== "1" ? d.url : null);
 
         nodeLink.append("circle")
-            .attr("r", 25)
+            .attr("r", d => d.id === "1" ? 40 : 25)
             .attr("fill", d => d.id === "1" ? primaryColor : secondaryColor)
             .attr("stroke", d => d.id !== "1" ? primaryColor : '')
         
