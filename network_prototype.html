@@ -9,7 +9,7 @@
 </head>
 <body class="p-4">
     <div class="tile-wrapper p-4">
-        <h2 class="mb-4">Network graph</h2>
+        <h2 class="mb-2">Network graph</h2>
         <svg id="network-graph"></svg>
     </div>
     <script>
@@ -96,12 +96,11 @@
 
         link.append("line")
             .attr("stroke", "#ebebeb")
-            .attr("stroke-opacity", 1)
             .attr("stroke-width", 2);
 
         const linkText = link.append("text")
             .attr("class", "relationship")
-            .attr("dy", "-1em")
+            .attr("dy", -7)
             .attr("dx", 0)
             .attr("text-anchor", "middle")
             .text(d => d.relationship)
@@ -113,7 +112,6 @@
             .data(data.nodes)
             .enter().append("g")
             .attr("class", "node")
-            .attr("class", "test");
 
         const nodeLink = node.append("a")
             .attr("xlink:href", d => d.id !== "1" ? d.url : null);
@@ -122,12 +120,12 @@
             .attr("r", 25)
             .attr("fill", d => d.id === "1" ? primaryColor : secondaryColor);
 
-            
+
         nodeLink.append("foreignObject")
-            .attr("class", "name")
-            .attr("width", 200)  // Maksymalna szerokość tekstu
-            .attr("height", 100)  // Wysokość kontenera, dostosuj odpowiednio
-            .attr("x", -100)  // Pozycja x: połowa szerokości, aby wyśrodkować
+            .style("font-size", 12)
+            .attr("width", 150)  // Maksymalna szerokość tekstu
+            .attr("height", 40)  // Wysokość kontenera, dostosuj odpowiednio
+            .attr("x", -75)  // Pozycja x: połowa szerokości, aby wyśrodkować
             .attr("y", 30)  // Pozycja y: 30
             .append("xhtml:div")
             .style("text-align", "center")
@@ -149,10 +147,13 @@
         node.on("mouseover", (event, d) => {
             link.filter(l => l.source.id === d.id || l.target.id === d.id)
                 .select("text")
+                .style("font-size", 12)
+                .style("font-weight", "bold")
                 .style("display", null);
             link.filter(l => l.source.id === d.id || l.target.id === d.id)
                 .select("line")
-                .attr("stroke-width", 6);
+                .attr("stroke", '#1e1e1e')
+                .attr("stroke-width", 3);
         }).on("mouseout", (event, d) => {
             link.filter(l => l.source.id === d.id || l.target.id === d.id)
                 .select("text")
@@ -160,7 +161,7 @@
             link.filter(l => l.source.id === d.id || l.target.id === d.id)
                 .select("line")
                 .attr("stroke", 'green')
-                .attr("stroke-width", 3);
+                .attr("stroke-width", 2);
         });
     </script>
 </body>
