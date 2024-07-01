@@ -95,7 +95,7 @@
             .attr("class", "link");
 
         link.append("line")
-            .attr("stroke", "#ebebeb")
+            .attr("stroke", "#e2e2e2")
             .style("stroke-dasharray", ("3, 3"))
             .attr("stroke-width", 1);
 
@@ -120,7 +120,7 @@
         nodeLink.append("circle")
             .attr("r", 25)
             .attr("fill", d => d.id === "1" ? primaryColor : secondaryColor);
-
+        
 
         nodeLink.append("foreignObject")
             .style("font-size", 12)
@@ -153,7 +153,7 @@
                 .style("display", null);
             link.filter(l => l.source.id === d.id || l.target.id === d.id)
                 .select("line")
-                .attr("stroke", '#1e1e1e')
+                .attr("stroke", primaryColor)
                 .style("stroke-dasharray", 0)
                 .attr("stroke-width", 3);
         }).on("mouseout", (event, d) => {
@@ -162,7 +162,7 @@
                 .style("display", "none");
             link.filter(l => l.source.id === d.id || l.target.id === d.id)
                 .select("line")
-                .attr("stroke", '#1E8550')
+                .attr("stroke", primaryColor)
                 .attr("stroke-width", 1);
         });
     </script>
