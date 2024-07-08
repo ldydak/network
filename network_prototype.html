@@ -15,6 +15,12 @@
     <script>
         const primaryColor = "#1E8550";
         const secondaryColor = "#eaecf0";
+        const width = 960;
+        const height = 550;
+        const margin = 30;
+        const baseDistance = 50;
+        const multiplier = 5;
+        const pixelPerChar = 3;
         const data = {
             "nodes": [
                 {"id": "1", "type": "company", "name": "SCHUFA Holding AG", "url": "/company/1"},
@@ -38,15 +44,14 @@
                 {"source": "1", "target": "7", "relationship": "100 % KK"},
                 {"source": "1", "target": "11", "relationship": "ehem. Vst."},
                 {"source": "5", "target": "10", "relationship": "Vorstand"},
-                {"source": "6", "target": "7", "relationship": "Address"},
                 {"source": "2", "target": "3", "relationship": "Pers.hft.Ges., ehem. Komp"},
                 {"source": "9", "target": "4", "relationship": "Vst., Ausgeschieden"},
             ]
         };
 
-        const width = 960;
-        const height = 550;
-        const margin = 20;
+        function calculateTextLength(text) {
+            return text.length * pixelPerChar;
+        }
 
         const svg = d3.select("svg")
             .attr("width", width)
@@ -59,11 +64,16 @@
             }
         });
 
+        data.links.forEach(link => {
+            const textLength = calculateTextLength(link.relationship);
+            link.distance = baseDistance + textLength * multiplier;
+        });
+
         const simulation = d3.forceSimulation(data.nodes)
-            .force("link", d3.forceLink(data.links).id(d => d.id).distance(50))
-            .force("charge", d3.forceManyBody().strength(-100))
+            .force("link", d3.forceLink(data.links).id(d => d.id).distance(d => d.distance))
+            .force("charge", d3.forceManyBody().strength(-200))
             .force("center", d3.forceCenter(width / 2, height / 2).strength(0.05))
-            .force("collision", d3.forceCollide().radius(100 - margin));
+            .force("collision", d3.forceCollide().radius(50));
 
         simulation.on("tick", () => {
             link.selectAll("line")
@@ -123,10 +133,10 @@
 
         nodeLink.append("foreignObject")
             .style("font-size", 12)
-            .attr("width", 150)  // Maksymalna szerokość tekstu
-            .attr("height", 40)  // Wysokość kontenera, dostosuj odpowiednio
-            .attr("x", -75)  // Pozycja x: połowa szerokości, aby wyśrodkować
-            .attr("y", d => d.id === "1" ? 40 : 30) // Pozycja y: 30
+            .attr("width", 150)
+            .attr("height", 40)
+            .attr("x", -75)
+            .attr("y", d => d.id === "1" ? 40 : 30)
             .append("xhtml:div")
             .style("text-align", "center")
             .style("word-wrap", "break-word")
